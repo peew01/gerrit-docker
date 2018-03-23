@@ -1,0 +1,32 @@
+#!/bin/bash
+
+CI_INIT_ADMIN=test-dev
+CI_INIT_PASSWORD=arvato123
+
+DEMO_CONFIG_XML=$(source ${BASH_SOURCE[0]%/*}/jenkins.demo.config.xml.sh)
+
+JENKINS_WEBURL=https://145.228.159.76/jenkins
+
+CHANGEID=
+CHANGEURL=
+PROJECT=
+BRANCH=
+SUBMITTER=
+COMMIT=
+while [ $# -gt 0 ]
+do
+        case "$1" in
+                (--change)     CHANGEID="$2";  shift ;;
+                (--change-url) CHANGEURL="$2"; shift ;;
+                (--change-owner)   OWNER="$2"; shift ;;
+                (--project)    PROJECT="$2";   shift ;;
+                (--branch)     BRANCH="$2";    shift ;;
+                (--submitter)  SUBMITTER="$2"; shift ;;
+                (--commit)     COMMIT="$2";    shift ;;
+                (--newrev)     NEWREV="$2";    shift ;;
+                (*)                            shift ;;
+        esac
+        shift
+done
+
+curl --insecure --request POST --user "${CI_INIT_ADMIN}:${CI_INIT_PASSWORD}" --data-raw "${DEMO_CONFIG_XML}" --header "Content-Type: application/xml;charset=UTF-8" ${JENKINS_WEBURL}/createItem?name=${PROJECT}
