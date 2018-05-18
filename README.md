@@ -7,3 +7,8 @@ This project can also be utilized as a demo about how to extend the [Gerrit dock
 
 ## Todo
 Fix createGerrit.sh, destroyGerrit.sh and upgradeGerrit.sh in order to make it works with the [ci project](https://github.com/openfrontier/ci).
+
+Hooks werden nicht gestartet wenn auf HEAD:refs/for/master gepusht wird.
+Werden getriggered, wenn z.B. direkt auf master gepusht wird. (gilt für ref-update hook)
+
+Beim patchset-created hook funktioniert es!
