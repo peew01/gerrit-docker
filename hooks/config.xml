@@ -55,7 +55,6 @@
                     <customUrl></customUrl>
                     <serverName>Gerrit</serverName>
                     <triggerOnEvents>
-                        <com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.events.PluginChangeMergedEvent/>
                         <com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.events.PluginPatchsetCreatedEvent>
                             <excludeDrafts>true</excludeDrafts>
                             <excludeTrivialRebase>false</excludeTrivialRebase>
