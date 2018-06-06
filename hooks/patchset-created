@@ -3,9 +3,9 @@
 CI_INIT_ADMIN=test-dev
 CI_INIT_PASSWORD=arvato123
 
-DEMO_CONFIG_XML=$(source ${BASH_SOURCE[0]%/*}/jenkins.demo.config.xml.sh)
-
 JENKINS_WEBURL=jenkins-master:8080/jenkins
+
+SOURCE=`dirname "$0"`
 
 CHANGEID=
 CHANGEURL=
@@ -29,6 +29,6 @@ do
         shift
 done
 
-cat config.xml | sed -e 's/${PROJECT_NAME}/'${PROJECT}''/g' > config_temp.xml
+cat ${SOURCE}/config.xml | sed -e 's/${PROJECT_NAME}/'${PROJECT}'/g' > config_temp.xml
 
-curl -XPOST '${JENKINS_WEBURL}/createItem?name=${PROJECT}' --data-binary @config_temp.xml -H "Content-Type:text/xml"
+curl -XPOST ${JENKINS_WEBURL}/createItem?name=${PROJECT} --data-binary @config_temp.xml -H "Content-Type:text/xml"
