@@ -1,7 +1,5 @@
 FROM openfrontier/gerrit:latest
 
-MAINTAINER zsx <thinkernel@gmail.com>
-
 COPY gerrit-create-user.sh /usr/local/bin/gerrit-create-user.sh
 COPY gerrit-upload-ssh-key.sh /usr/local/bin/gerrit-upload-ssh-key.sh
 COPY hooks /var/gerrit/review_site/hooks
