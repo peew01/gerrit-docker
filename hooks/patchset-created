@@ -30,5 +30,5 @@ do
 done
 if [ "$PROJECT" != "All-Projects" ]; then
     cat ${SOURCE}/config.xml | sed -e 's/${PROJECT_NAME}/'${PROJECT}'/g' > config_temp.xml
-    curl -XPOST ${JENKINS_WEBURL}/createItem?name=${PROJECT} --data-binary @config_temp.xml -H "Content-Type:text/xml"
+    curl -XPOST ${JENKINS_WEBURL}/createItem?name=${PROJECT} -u ${CI_INIT_ADMIN}:${CI_INIT_PASSWORD} --data-binary @config_temp.xml -H "Content-Type:text/xml"
 fi
